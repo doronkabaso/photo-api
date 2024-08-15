@@ -18,8 +18,6 @@ app.use('/api/orders', orderRoutes);
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/photo-api', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
     });
     console.log('MongoDB connected');
   } catch (error: any) {
