@@ -1,0 +1,26 @@
+// To install packages, run 
+npm install
+
+// To run the server, 
+npx ts-node app.ts
+
+// To start mondoDB
+net start mongodb
+
+// In Postman 
+
+GET request
+http://localhost:3000/api/?key=45450448-73e4f704fc9a85d8e75a612b6&image_type=photo&per_page=3
+
+
+POST request
+http://localhost:3000/api/orders
+In body JSON
+{
+    "email": "doronkabaso@gmail.com",
+    "fullName": "doron kabaso",
+    "fullAddress": "test",
+    "imageUrls": [],
+    "frameColor": "white",
+    "user": 1
+  }
