@@ -4,9 +4,6 @@ npm install
 // To run the server, 
 npx ts-node app.ts
 
-// To start mondoDB
-net start mongodb
-
 // In Postman 
 
 GET request
