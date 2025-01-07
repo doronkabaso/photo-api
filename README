@@ -1,23 +1,124 @@
-// To install packages, run 
-npm install
+# Photo API
 
-// To run the server, 
-npx ts-node app.ts
+A Node.js and TypeScript-powered REST API that integrates with a MongoDB database to handle photo retrieval and order management.
 
-// In Postman 
+## Features
 
-GET request
-http://localhost:3000/api/?key=45450448-73e4f704fc9a85d8e75a612b6&image_type=photo&per_page=3
+- **Photo Management**: Retrieve photos from external sources (e.g., Pixabay) using their API.
+- **Order Management**: Handle order-related operations, including creation and retrieval.
+- **Environment Configurations**: Uses `.env` for secure storage of sensitive credentials.
+- **MongoDB Integration**: Efficient database operations powered by Mongoose.
+- **Routing**: Organized and modular routing for photos and orders.
 
+## Tech Stack
 
-POST request
-http://localhost:3000/api/orders
-In body JSON
-{
-    "email": "doronkabaso@gmail.com",
-    "fullName": "doron kabaso",
-    "fullAddress": "test",
-    "imageUrls": [],
-    "frameColor": "white",
-    "user": 1
+- **Server**: Node.js, Express.js
+- **Database**: MongoDB (Mongoose)
+- **Language**: TypeScript
+- **Environment Management**: dotenv
+- **External API Integration**: Axios
+
+## Project Structure
+
+```plaintext
+|-- controllers
+|   |-- photoController.ts  # Handles photo-related logic
+|   |-- orderController.ts  # Handles order-related logic
+|-- models
+|   |-- orderModel.ts       # Defines schema for orders
+|-- routes
+|   |-- photoRoutes.ts      # Routes for photo operations
+|   |-- orderRoutes.ts      # Routes for order operations
+|-- .env                    # Environment variables
+|-- app.ts                  # Main application file
+|-- package.json            # Project dependencies
+|-- tsconfig.json           # TypeScript configuration
+```
+
+## Setup and Installation
+
+### Prerequisites
+
+- Node.js (LTS version recommended)
+- MongoDB (local or cloud instance)
+- API key for Pixabay
+
+### Steps to Set Up
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/doronkabaso/photo-api.git
+   cd photo-api
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the root directory with the following content:
+
+   ```env
+   MONGO_URI=mongodb://localhost:27017/photo-order-db
+   PIXABAY_ACCESS_KEY=your_pixabay_api_key
+   ```
+
+   Replace `your_pixabay_api_key` with your actual Pixabay API key.
+
+4. Start the server:
+
+   ```bash
+   npx ts-node app.ts
+   ```
+
+5. The server will run on `http://localhost:3000`.
+
+## Usage
+
+### Photo API
+
+- **GET** `/api/photos`  
+  Fetch photos from the external source (e.g., Pixabay) using the provided API key.
+
+### Order API
+
+- **POST** `/api/orders`  
+  Create a new order. Example payload:
+
+  ```json
+  {
+    "email": "example@gmail.com",
+    "fullName": "John Doe",
+    "fullAddress": "123 Main St, City, Country",
+    "imagesUrl": ["https://example.com/image1.jpg"],
+    "frameColor": "black",
+    "user": "12345"
   }
+  ```
+
+- **GET** `/api/orders`  
+  Retrieve all orders.
+
+## Environment Variables
+
+This project uses the following environment variables:
+
+- `MONGO_URI`: MongoDB connection string
+- `PIXABAY_ACCESS_KEY`: Pixabay API access key
+
+## Dependencies
+
+Key dependencies used in this project include:
+
+- **express**: Fast and lightweight web framework
+- **mongoose**: MongoDB object modeling tool
+- **dotenv**: Environment variable management
+- **axios**: Promise-based HTTP client for external API calls
+- **typescript**: Type safety and modern JavaScript features
+
+## Feedback
+
+For suggestions or issues, please raise them in the [GitHub repository](https://github.com/doronkabaso/photo-api/issues).
+
